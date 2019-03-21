@@ -5,10 +5,14 @@
   <%= link_to "Add a new client", new_client_path %>
 
   <% @clients.each do |client| %>
-    <h2><%= client.name %></h2>
-    <p><%= client.total_time %></p>
-    <%= link_to "Details", client_path(client) %>
-    <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class="index-content">
+      <h2><%= client.name %></h2>
+      <!-- <p><%= client.total_time %></p> -->
+      <p><%= client.total_time / 60 %>h <%= client.total_time % 60 %>min</p>
+
+      <%= link_to "Details", client_path(client) %>
+      <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
   <% end %>
 
 </div>

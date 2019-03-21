@@ -14,8 +14,13 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.save
-    redirect_to clients_path
+    @client.user = current_user
+    @client.total_time = 0
+    if @client.save!
+      redirect_to client_path(@client)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -31,6 +36,12 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
+  # def time_conversion(minutes)
+  #   hours = minutes / 60
+  #   rest = minutes % 60
+  #   puts "#{hours}h #{rest}min"
+  # end
+
   private
 
   def set_client
@@ -38,6 +49,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name, :total_time)
+    params.require(:client).permit(:name)
   end
 end

@@ -1,7 +1,7 @@
 <div class="container">
 
   <h1><%= @client.name %></h1>
-  <p><%= @client.total_time %></p>
+  <p><%= @client.total_time / 60 %>h <%= @client.total_time % 60 %>min</p>
 
   <%= link_to "Back to list", clients_path %>
 
