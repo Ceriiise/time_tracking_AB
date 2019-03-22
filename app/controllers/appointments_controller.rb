@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:show, :new, :create, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :new, :create, :destroy]
 
   def index
     @appointments = current_user.appointments
@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.client = @client
     @appointment.user = current_user
-    update_total_time
+    upgrade_total_time
     if @appointment.save
       redirect_to client_appointments_path(@client)
     else
@@ -26,23 +26,30 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    update_total_time
+    upgrade_total_time
     @appointment.update(appointment_params)
     redirect_to appointment_path(@appointment)
   end
 
   def destroy
+    decrese_total_time
     @appointment.destroy
     redirect_to client_appointments_path(@client)
   end
 
-  def update_total_time
+  def upgrade_total_time
     @client = Client.find(params[:client_id])
     @client.total_time += @appointment.duration.to_i
+    @client.save
+  end
+
+  def decrese_total_time
+    @client = Client.find(params[:client_id])
+    @client.total_time -= @appointment.duration.to_i
+    @client.save
   end
 
   private
@@ -52,7 +59,7 @@ class AppointmentsController < ApplicationController
   end
 
   def set_client
-    @client = client.appointment.find(params[:id])
+    @client = Client.find(params[:client_id])
   end
 
   def appointment_params
