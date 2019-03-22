@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @appointment = Appointment.where(client_id: @client)
   end
 
   def new

@@ -1,7 +1,18 @@
 <div class="container">
 
   <h1><%= @client.name %></h1>
-  <p><%= @client.total_time / 60 %>h <%= @client.total_time % 60 %>min</p>
+
+  <% if @client.user == current_user %>
+    <p>Total time spend :<%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</p>
+
+    <p>All my appointments with <%= @client.name %></p>
+
+    <% @appointment.each do |appointment| %>
+    <p><%= appointment.date %> : <%= (appointment.duration / 60) %>h <%= (appointment.duration % 60) %> min</p>
+    <% end %>
+  <% else %>
+    <p>Oh no ! <%= @client.name %> isn't my client.</p>
+  <% end %>
 
   <%= link_to "Back to list", clients_path %>
 

@@ -1,0 +1,13 @@
+<%= form_for @appointment do |f| %>
+
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+
+  <%= f.label :duration, 'How long (in minutes) ?' %>
+  <%= f.number_field :duration %>
+
+  <%= f.submit %>
+
+<% end %>
+
+<%= link_to "Back to list", appointments_path %>

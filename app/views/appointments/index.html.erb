@@ -1,0 +1,13 @@
+<div class="container">
+
+  <h1>Appointments</h1>
+
+  <% @appointments.each do |appointment| %>
+    <div class="content">
+      <p><%= appointment.date %></p>
+      <p><%= appointment.client.name %></p>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to clients list', clients_path %>
+</div>
