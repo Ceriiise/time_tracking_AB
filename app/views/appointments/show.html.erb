@@ -4,5 +4,6 @@
   <p>Time spend <%= @appointment.duration %></p>
 
   <%= link_to 'Edit this appointement', edit_appointment_path(@appointment) %></br>
+  <%= link_to 'Delete', client_appointment_path(@client) %></br>
   <%= link_to 'Back to list', clients_path %>
 </div>

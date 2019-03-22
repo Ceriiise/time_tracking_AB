@@ -40,7 +40,6 @@ class ClientsController < ApplicationController
   # def time_conversion(minutes)
   #   hours = minutes / 60
   #   rest = minutes % 60
-  #   puts "#{hours}h #{rest}min"
   # end
 
   private
@@ -50,6 +49,6 @@ class ClientsController < ApplicationController
   end
 
   def client_params
-    params.require(:client).permit(:name)
+    params.require(:client).permit(:name, :total_time)
   end
 end

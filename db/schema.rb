@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_095917) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
-    t.integer "total_time", defaut: 0
+    t.integer "total_time"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

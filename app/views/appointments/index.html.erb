@@ -4,8 +4,7 @@
 
   <% @appointments.each do |appointment| %>
     <div class="content">
-      <p><%= appointment.date %></p>
-      <p><%= appointment.client.name %></p>
+      <p><%= appointment.client.name %> on <%= appointment.date %></p>
     </div>
   <% end %>
 

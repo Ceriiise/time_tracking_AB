@@ -10,7 +10,7 @@
       <!-- <p><%= client.total_time %></p> -->
       <p><%= client.total_time / 60 %>h <%= client.total_time % 60 %>min</p>
 
-      <%= link_to "Add an appointment", new_appointment_path(@appointment) %>
+      <%= link_to "Add an appointment", new_client_appointment_path(client) %>
       <%= link_to "Details", client_path(client) %>
       <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
