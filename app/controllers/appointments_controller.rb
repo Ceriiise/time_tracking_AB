@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
   def update
     upgrade_total_time
     @appointment.update(appointment_params)
-    redirect_to appointment_path(@appointment)
+    redirect_to client_appointments_path(@client)
   end
 
   def destroy
