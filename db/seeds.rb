@@ -58,7 +58,7 @@ first_appointment = Appointment.create!(
 )
 
 second_appointment = Appointment.create!(
-  date: '2019-03-15',
+  date: '2019-03-18',
   duration: 90,
   user: philippine,
   client: philippine_client_two
