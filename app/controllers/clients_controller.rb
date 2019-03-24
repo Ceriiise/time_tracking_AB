@@ -2,11 +2,11 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.all
+    @clients = Client.all.sort_by(&:name)
   end
 
   def show
-    @appointment = Appointment.where(client_id: @client)
+    @appointments = Appointment.where(client_id: @client)
   end
 
   def new

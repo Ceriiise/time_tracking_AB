@@ -19,7 +19,7 @@ class AppointmentsController < ApplicationController
     @appointment.user = current_user
     upgrade_total_time
     if @appointment.save
-      redirect_to client_appointments_path(@client)
+      redirect_to client_path(@client)
     else
       render 'new'
     end
@@ -31,13 +31,13 @@ class AppointmentsController < ApplicationController
   def update
     upgrade_total_time
     @appointment.update(appointment_params)
-    redirect_to client_appointments_path(@client)
+    redirect_to client_path(@client)
   end
 
   def destroy
     decrese_total_time
     @appointment.destroy
-    redirect_to client_appointments_path(@client)
+    redirect_to client_path(@client)
   end
 
   def upgrade_total_time
