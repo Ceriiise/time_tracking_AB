@@ -2,21 +2,24 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.all.sort_by(&:name)
+    # @clients = Client.all.sort_by(&:name)
+    @clients = policy_scope(Client).sort_by(&:name)
   end
 
   def show
-    @appointments = Appointment.where(client_id: @client)
+    @appointments = Appointment.where(client_id: @client).sort_by(&:date)
   end
 
   def new
     @client = Client.new
+    authorize @client
   end
 
   def create
     @client = Client.new(client_params)
     @client.user = current_user
     @client.total_time = 0
+    authorize @client
     if @client.save!
       redirect_to client_path(@client)
     else
@@ -28,8 +31,8 @@ class ClientsController < ApplicationController
   end
 
   def update
-    Client.update(client_params)
-    redirect_to clients_path
+    # Client.update(client_params)
+    # redirect_to clients_path
   end
 
   def destroy
@@ -37,15 +40,11 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
-  # def time_conversion(minutes)
-  #   hours = minutes / 60
-  #   rest = minutes % 60
-  # end
-
   private
 
   def set_client
     @client = Client.find(params[:id])
+    authorize @client
   end
 
   def client_params

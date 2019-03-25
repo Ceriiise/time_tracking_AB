@@ -11,8 +11,13 @@
         <!-- <p><%= client.total_time %></p> -->
         <%= client.total_time / 60 %>h <%= client.total_time % 60 %>min
 
-        <%= link_to "Details", client_path(client) %> |
-        <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <% if policy(client).show? %>
+          <%= link_to "Details", client_path(client) %> |
+        <% end %>
+
+        <% if policy(client).destroy? %>
+          <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %></p>
       </li>
     <% end %>
   </ul>

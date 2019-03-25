@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :clients do
     resources :appointments
   end
-
+  get 'calendar', to: 'pages#calendar'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

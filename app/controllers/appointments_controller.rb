@@ -3,21 +3,24 @@ class AppointmentsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :new, :create, :destroy]
 
   def index
-    @appointments = current_user.appointments
   end
 
   def show
   end
 
   def new
-    @appointment = Appointment.new
+    p "je suis dans new"
+    p @appointment = Appointment.new
+    p @appointment.user = @client.user
+    authorize @appointment
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.client = @client
-    @appointment.user = current_user
+    @appointment.user = @client.user
     upgrade_total_time
+    authorize @appointment
     if @appointment.save
       redirect_to client_path(@client)
     else
@@ -56,10 +59,12 @@ class AppointmentsController < ApplicationController
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
+    authorize @appointment
   end
 
   def set_client
     @client = Client.find(params[:client_id])
+    authorize @client
   end
 
   def appointment_params
