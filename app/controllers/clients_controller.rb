@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @appointments = Appointment.where(client_id: @client)
+    @appointments = Appointment.where(client_id: @client).sort_by(&:date)
   end
 
   def new
@@ -39,11 +39,6 @@ class ClientsController < ApplicationController
     @client.destroy
     redirect_to clients_path
   end
-
-  # def time_conversion(minutes)
-  #   hours = minutes / 60
-  #   rest = minutes % 60
-  # end
 
   private
 
