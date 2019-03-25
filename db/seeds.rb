@@ -58,7 +58,7 @@ first_appointment = Appointment.create!(
 )
 
 second_appointment = Appointment.create!(
-  date: '2019-03-18',
+  date: '2019-03-27',
   duration: 90,
   user: philippine,
   client: philippine_client_two
@@ -72,14 +72,14 @@ thirth_appointment = Appointment.create!(
 )
 
 fourth_appointment = Appointment.create!(
-  date: '2018-02-15',
+  date: '2019-03-27',
   duration: 120,
   user: calypso,
   client: calypso_client_two
 )
 
 fifth_appointment = Appointment.create!(
-  date: '2018-01-02',
+  date: '2019-03-18',
   duration: 60,
   user: calypso,
   client: calypso_client_one
