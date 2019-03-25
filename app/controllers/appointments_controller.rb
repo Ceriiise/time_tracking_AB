@@ -9,9 +9,8 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    p "je suis dans new"
-    p @appointment = Appointment.new
-    p @appointment.user = @client.user
+    @appointment = Appointment.new
+    @appointment.user = @client.user
     authorize @appointment
   end
 
@@ -64,7 +63,6 @@ class AppointmentsController < ApplicationController
 
   def set_client
     @client = Client.find(params[:client_id])
-    authorize @client
   end
 
   def appointment_params
