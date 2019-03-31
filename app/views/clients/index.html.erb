@@ -1,25 +1,46 @@
 <div class="container">
 
-  <h1>Les clients</h1>
+  <div class="client-header">
+    <div class="client-title">
+      <h1>Les clients</h1>
+    </div>
 
-  <%= link_to "Add a new client", new_client_path %>
+    <div class="client-add">
+      <%= link_to "Add a new client", new_client_path %>
+    </div>
+  </div>
+
 
   <ul>
     <% @clients.each do |client| %>
       <li>
-        <p><%= client.name %> :
-        <!-- <p><%= client.total_time %></p> -->
-        <%= client.total_time / 60 %>h <%= client.total_time % 60 %>min
+        <div class="card-container">
+          <div class="card-name">
+            <%= client.name %>
+          </div>
 
-        <% if policy(client).show? %>
-          <%= link_to "Details", client_path(client) %> |
-        <% end %>
+          <div class="card-time">
+            <%= client.total_time / 60 %>h <%= client.total_time % 60 %>min
+          </div>
 
-        <% if policy(client).destroy? %>
-          <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %></p>
+          <div class="card-options">
+            <% if policy(client).show? %>
+              <div class="card-more">
+                <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+              </div>
+            <% end %>
+
+            <% if policy(client).destroy? %>
+              <div class="card-delete">
+                <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
       </li>
     <% end %>
   </ul>
+
 
 </div>

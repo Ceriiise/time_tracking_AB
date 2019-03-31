@@ -1,0 +1,34 @@
+.container {
+  width: 300px;
+}
+
+.form-setup {
+  // background-color: pink;
+  margin: 0 auto;
+  width: 700px;
+  padding: 30px;
+  margin: 30px;
+}
+
+.title-setup {
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fas {
+  color: $ab-blue;
+  opacity: 0.8;
+}
+
+.fas:hover {
+  color: $ab-blue;
+  text-decoration: none;
+  opacity: 1;
+  font-size: 17px;
+  transition: all 0.15s ease;
+}
