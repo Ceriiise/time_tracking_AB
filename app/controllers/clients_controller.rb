@@ -4,10 +4,12 @@ class ClientsController < ApplicationController
   def index
     # @clients = Client.all.sort_by(&:name)
     @clients = policy_scope(Client).sort_by(&:name)
+    @client = Client.new
   end
 
   def show
     @appointments = Appointment.where(client_id: @client).sort_by(&:date)
+    @appointment = Appointment.new
   end
 
   def new
