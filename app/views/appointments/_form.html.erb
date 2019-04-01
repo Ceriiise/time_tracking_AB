@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+<div class="form-content">
+  <%= simple_form_for [@client, @appointment] do |f| %>
 
-    <%= simple_form_for [@client, @appointment] do |f| %>
+    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
 
-      <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+    <%= f.label :duration, 'How long (in minutes) ?' %>
+    <%= f.number_field :duration %>
 
-      <%= f.label :duration, 'How long (in minutes) ?' %>
-      <%= f.number_field :duration %>
+    <%= f.button :submit, "Go", class: "btn btn-primary" %>
+  <% end %>
 
-      <%= f.button :submit, "Add this appointment", class: "btn btn-primary" %>
-    <% end %>
+  <div class="form-back">
+    <%= link_to "Back to appointment", client_path(@client) %>
   </div>
-</div>
-
-<%= link_to "Back to appointment", client_path(@client) %>
+  </div>

@@ -1,0 +1,21 @@
+.form-container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240)
+}
+
+.form-title h1 {
+  font-size: 50px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  color: $ab-blue;
+}
+
+.form-content {
+  vertical-align: center
+}
+
+.form-back {
+  margin-top: 30px;
+}

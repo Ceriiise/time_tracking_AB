@@ -1,25 +1,49 @@
 <div class="container">
+  <div class="index-container">
 
-  <h1>Les clients</h1>
+    <div class="client-header">
+      <div class="client-title slide-in-left">
+        <h1>Les clients</h1>
+      </div>
 
-  <%= link_to "Add a new client", new_client_path %>
+      <div class="client-add slide-in-right">
+        <%= link_to "Add a new client", new_client_path, class: "btn btn-info" %>
+      </div>
+    </div>
 
-  <ul>
-    <% @clients.each do |client| %>
-      <li>
-        <p><%= client.name %> :
-        <!-- <p><%= client.total_time %></p> -->
-        <%= client.total_time / 60 %>h <%= client.total_time % 60 %>min
 
-        <% if policy(client).show? %>
-          <%= link_to "Details", client_path(client) %> |
-        <% end %>
+    <ul>
+      <% @clients.each do |client| %>
+        <li>
+          <div class="client-card-container slide-in-bottom">
+            <div class="client-card-name">
+              <%= client.name %>
+            </div>
 
-        <% if policy(client).destroy? %>
-          <%= link_to "Delete", client_path(client), method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %></p>
-      </li>
-    <% end %>
-  </ul>
+            <div class="client-card-time">
+              <%= client.total_time / 60 %> h <%= client.total_time % 60 %> min
+            </div>
+
+
+              <% if policy(client).show? %>
+                <div class="client-card-more">
+                  <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+                </div>
+              <% end %>
+
+              <% if policy(client).destroy? %>
+                <div class="client-card-delete">
+                  <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+                </div>
+              <% end %>
+
+
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
 
 </div>
