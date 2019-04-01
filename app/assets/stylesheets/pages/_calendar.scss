@@ -1,0 +1,82 @@
+/* CALENDAR */
+
+.cal-container {
+  width: 1300px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgb(240, 240, 240)
+}
+
+.fas {
+  color: white;
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+.fas:hover {
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+  font-size: 18px;
+  transition: all 0.15s ease;
+}
+
+.cal-header {
+  width: 550px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 50px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  color: $ab-blue;
+  text-align: center;
+}
+
+.cal-card {
+  border-left: solid 0.3px white;
+  border-right: solid 0.3px white;
+}
+
+.cal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cal-card-day {
+  height: 30px;
+  width: 200px;
+  margin: 0 auto;
+  color: darkgrey;
+  font-size: 15px;
+  text-align: center;
+  background-color: rgb(250, 250, 250);
+  border-radius: 3px;
+}
+
+.cal-card-content {
+  height: 30px;
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: $ab-blue;
+  border: 0.1px solid lightgrey;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.cal-card-name {
+  color: white;
+  font-size: 15px;
+  grid-column: 1;
+  text-align: center;
+}
+
+.cal-card-time {
+  color: white;
+  font-size: 15px;
+  grid-column: 2;
+  text-align: center;
+}

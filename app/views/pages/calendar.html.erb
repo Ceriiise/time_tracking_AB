@@ -1,19 +1,43 @@
-<h2>Calendar Week</h2>
 
-<% @days_from_this_week.each do |day| %>
-  <h4><%= day.strftime("%A %e %B") %></h4>
-    <% appointments_of_the_day = @appointments.where(date: day) %>
-    <% if appointments_of_the_day.blank? %>
-      <p>No appointment</p>
-    <% else %>
-      <ul>
-        <% appointments_of_the_day.each do |appointment| %>
-          <li>
-            <%= appointment.client.name %>
-            during
-            <%= (appointment.duration / 60) %>h <%= (appointment.duration % 60) %> min
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-<% end %>
+  <div class="cal-container">
+    <div class="cal-header">
+      Calendar Week
+    </div>
+
+    <div class="cal-content">
+      <% @days_from_this_week.each do |day| %>
+        <div class="cal-card">
+
+          <div class="cal-card-day">
+            <%= day.strftime("%A %e %B") %>
+          </div>
+
+          <% appointments_of_the_day = @appointments.where(date: day) %>
+          <% if appointments_of_the_day.blank? %>
+            <p>No appointment</p>
+
+          <% else %>
+            <ul>
+              <% appointments_of_the_day.each do |appointment| %>
+                <li>
+                  <div class="cal-card-content">
+                    <div class="cal-card-name">
+                      <%= appointment.client.name %>
+                    </div>
+                    <div class="cal-card-time">
+                      <%= (appointment.duration / 60) %>h <%= (appointment.duration % 60) %> min
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+
+

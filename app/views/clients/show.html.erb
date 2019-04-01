@@ -1,26 +1,42 @@
 <div class="container">
+  <div class="index-container">
 
-  <h1><%= @client.name %></h1>
+    <div class="app-header">
+      <div class="app-title">
+        <h1><%= @client.name %></h1>
+      </div>
+      <div class="app-time">
+        <h1><%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</h1>
+      </div>
+    </div>
 
-  <% if @client.user == current_user %>
-    <p>Total time spend :<%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</p>
-
-    <h3>All my appointments with <%= @client.name %></h3>
-
-    <%= link_to "Add an appointment", new_client_appointment_path(@client) %>
+    <div class="app-add">
+      <%= link_to "Add an appointment", new_client_appointment_path(@client), class:"btn btn-info" %>
+    </div>
 
     <ul>
       <% @appointments.each do |appointment| %>
-        <li><%= appointment.date.strftime("%e %B %Y") %> : <%= (appointment.duration / 60) %>h <%= (appointment.duration % 60) %> min</br>
-        <%= link_to 'Edit this appointement', edit_client_appointment_path(@client, appointment) %> |
-        <%= link_to 'Delete', client_appointment_path(@client,appointment), method: :delete, data: { confirm: "Are you sure?" } %></br>
+        <li>
+          <div class="app-card-container">
+            <div class="app-card-date">
+              <%= appointment.date.strftime("%e %B %Y") %>
+            </div>
+            <div class="app-card-time">
+             <%= (appointment.duration / 60) %> h <%= (appointment.duration % 60) %> min
+            </div>
+            <div class="app-card-edit">
+              <%= link_to '', edit_client_appointment_path(@client, appointment), class:"fas fa-edit" %>
+            </div>
+            <div class="app-card-delete">
+              <%= link_to '', client_appointment_path(@client,appointment), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>
-  <% else %>
-    <p>Oh no ! <%= @client.name %> isn't my client.</p>
-  <% end %>
 
-  <%= link_to "Back to list", clients_path %>
-
+    <div class="app-add">
+      <%= link_to "Back to list", clients_path %>
+    </div>
+  </div>
 </div>

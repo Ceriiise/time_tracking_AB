@@ -1,46 +1,49 @@
 <div class="container">
+  <div class="index-container">
 
-  <div class="client-header">
-    <div class="client-title">
-      <h1>Les clients</h1>
+    <div class="client-header">
+      <div class="client-title">
+        <h1>Les clients</h1>
+      </div>
+
+      <div class="client-add">
+        <%= link_to "Add a new client", new_client_path, class: "btn btn-info" %>
+      </div>
     </div>
 
-    <div class="client-add">
-      <%= link_to "Add a new client", new_client_path %>
-    </div>
+
+    <ul>
+      <% @clients.each do |client| %>
+        <li>
+          <div class="client-card-container">
+            <div class="client-card-name">
+              <%= client.name %>
+            </div>
+
+            <div class="client-card-time">
+              <%= client.total_time / 60 %> h <%= client.total_time % 60 %> min
+            </div>
+
+
+              <% if policy(client).show? %>
+                <div class="client-card-more">
+                  <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+                </div>
+              <% end %>
+
+              <% if policy(client).destroy? %>
+                <div class="client-card-delete">
+                  <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+                </div>
+              <% end %>
+
+
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
   </div>
-
-
-  <ul>
-    <% @clients.each do |client| %>
-      <li>
-        <div class="card-container">
-          <div class="card-name">
-            <%= client.name %>
-          </div>
-
-          <div class="card-time">
-            <%= client.total_time / 60 %>h <%= client.total_time % 60 %>min
-          </div>
-
-          <div class="card-options">
-            <% if policy(client).show? %>
-              <div class="card-more">
-                <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
-              </div>
-            <% end %>
-
-            <% if policy(client).destroy? %>
-              <div class="card-delete">
-                <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
-              </div>
-            <% end %>
-          </div>
-
-        </div>
-      </li>
-    <% end %>
-  </ul>
 
 
 </div>
