@@ -2,22 +2,22 @@
   <div class="index-container">
 
     <div class="app-header">
-      <div class="app-title">
+      <div class="app-title slide-in-left">
         <h1><%= @client.name %></h1>
       </div>
-      <div class="app-time">
+      <div class="app-time slide-in-right">
         <h1><%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</h1>
       </div>
     </div>
 
-    <div class="app-add">
+    <div class="app-add slide-in-bottom">
       <%= link_to "Add an appointment", new_client_appointment_path(@client), class:"btn btn-info" %>
     </div>
 
     <ul>
       <% @appointments.each do |appointment| %>
         <li>
-          <div class="app-card-container">
+          <div class="app-card-container slide-in-bottom">
             <div class="app-card-date">
               <%= appointment.date.strftime("%e %B %Y") %>
             </div>
@@ -27,15 +27,15 @@
             <div class="app-card-edit">
               <%= link_to '', edit_client_appointment_path(@client, appointment), class:"fas fa-edit" %>
             </div>
-            <div class="app-card-delete">
-              <%= link_to '', client_appointment_path(@client,appointment), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+            <div class="app-card-delete" id="delete">
+              <%= link_to '', client_appointment_path(@client,appointment), method: :delete, class:"fas fa-trash-alt" %>
             </div>
           </div>
         </li>
       <% end %>
     </ul>
 
-    <div class="app-add">
+    <div class="app-add slide-in-bottom">
       <%= link_to "Back to list", clients_path %>
     </div>
   </div>

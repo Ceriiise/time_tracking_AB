@@ -2,11 +2,11 @@
   <div class="index-container">
 
     <div class="client-header">
-      <div class="client-title">
+      <div class="client-title slide-in-left">
         <h1>Les clients</h1>
       </div>
 
-      <div class="client-add">
+      <div class="client-add slide-in-right">
         <%= link_to "Add a new client", new_client_path, class: "btn btn-info" %>
       </div>
     </div>
@@ -15,7 +15,7 @@
     <ul>
       <% @clients.each do |client| %>
         <li>
-          <div class="client-card-container">
+          <div class="client-card-container slide-in-bottom">
             <div class="client-card-name">
               <%= client.name %>
             </div>
