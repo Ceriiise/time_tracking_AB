@@ -25,19 +25,17 @@
             </div>
 
 
-              <% if policy(client).show? %>
-                <div class="client-card-more">
-                  <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
-                </div>
-              <% end %>
+            <% if policy(client).show? %>
+              <div class="client-card-more">
+                <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+              </div>
+            <% end %>
 
-              <% if policy(client).destroy? %>
-                <div class="client-card-delete">
-                  <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
-                </div>
-              <% end %>
-
-
+            <% if policy(client).destroy? %>
+              <div class="client-card-delete">
+                <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+              </div>
+            <% end %>
           </div>
         </li>
       <% end %>
