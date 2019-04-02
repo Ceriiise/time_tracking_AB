@@ -14,7 +14,9 @@
 
           <% appointments_of_the_day = @appointments.where(date: day) %>
           <% if appointments_of_the_day.blank? %>
-            <p>No appointment</p>
+            <div class="cal-card-day">
+              No appointment
+             </div>
 
           <% else %>
             <ul>

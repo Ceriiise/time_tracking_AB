@@ -25,6 +25,8 @@
 }
 
 /* CLIENT CARD */
+/* ----------- */
+
 .client-title {
   width: 550px;
   height: 150px;
@@ -87,6 +89,8 @@
 }
 
 /* APPOINTMENT CARD */
+/* ---------------- */
+
 .app-header {
   width: 550px;
   height: 150px;
@@ -160,17 +164,4 @@
   grid-column: 4;
   color: white;
   margin: 0 auto;
-}
-
-/* SIMPLE FORM */
-
-.simple-form {
-  width: 500px;
-  background-color: white;
-  padding: 40px;
-  border-radius: 5px;
-}
-
-.simple-form-title {
-  margin-bottom: 20px;
 }

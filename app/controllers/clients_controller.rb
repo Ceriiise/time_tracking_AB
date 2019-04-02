@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
     @client.total_time = 0
     authorize @client
     if @client.save!
-      redirect_to client_path(@client)
+      redirect_to clients_path
     else
       render 'new'
     end
