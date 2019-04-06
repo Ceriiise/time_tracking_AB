@@ -1,14 +1,7 @@
-<div class="form-content">
-  <%= simple_form_for @client do |f| %>
+<%= simple_form_for @client, remote: true do |f| %>
 
-    <%= f.label :name, 'Enter a name' %>
-    <%= f.text_field :name %>
+  <%= f.input :name %>
 
-    <%= f.button :submit, "Create client", class: "btn btn-info" %>
+  <%= f.button :submit, "Create client", class: "btn btn-primary" %>
 
-  <% end %>
-
-  <div class="form-back">
-    <%= link_to "Back to list", clients_path %>
-  </div>
-</div>
+<% end %>

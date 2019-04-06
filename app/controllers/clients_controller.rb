@@ -4,10 +4,12 @@ class ClientsController < ApplicationController
   def index
     # @clients = Client.all.sort_by(&:name)
     @clients = policy_scope(Client).sort_by(&:name)
+    @client = Client.new
   end
 
   def show
     @appointments = Appointment.where(client_id: @client).sort_by(&:date)
+    @appointment = Appointment.new
   end
 
   def new
@@ -21,9 +23,15 @@ class ClientsController < ApplicationController
     @client.total_time = 0
     authorize @client
     if @client.save!
-      redirect_to client_path(@client)
+      respond_to do |format|
+        format.html { redirect_to client_path(@client) }
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.js
+      end
     end
   end
 
