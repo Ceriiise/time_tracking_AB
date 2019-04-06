@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newAppointmentForm = document.getElementById('new_appointment');
+  newAppointmentForm.innerHTML = innerHTML;
+}
+
+function addAppointment(appointmentHTML) {
+  const appointments = document.getElementById('appointments');
+  appointments.innerHTML = appointmentHTML;
+}
+
+<% if @appointment.errors.any? %>
+  refreshForm('<%= j render "appointments/new", client: @client, appointment: @appointment %>');
+<% else %>
+  addAppointment('<%= j render "appointments/list", appointments: @appointments %>');
+  refreshForm('<%= j render "appointments/new", client: @client, appointment: Appointment.new %>');
+<% end %>

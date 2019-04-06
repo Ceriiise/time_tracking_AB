@@ -25,7 +25,7 @@
       <h1>Add an appointment</h1>
     </div>
     <div class="simple-form-content">
-      <%= render 'appointments/new', appointments: @appointments %>
+      <%= render 'appointments/new', client: @client, appointment: Appointment.new %>
     </div>
   </div>
 

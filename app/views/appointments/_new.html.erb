@@ -1,4 +1,4 @@
-<%= simple_form_for [@client, @appointment] do |f| %>
+<%= simple_form_for [client, appointment], remote: true do |f| %>
 
   <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
 
