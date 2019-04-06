@@ -28,6 +28,7 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    decrese_total_time
   end
 
   def update
@@ -42,6 +43,17 @@ class AppointmentsController < ApplicationController
     redirect_to client_path(@client)
   end
 
+  private
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+    authorize @appointment
+  end
+
+  def set_client
+    @client = Client.find(params[:client_id])
+  end
+
   def upgrade_total_time
     @client = Client.find(params[:client_id])
     @client.total_time += @appointment.duration.to_i
@@ -52,17 +64,6 @@ class AppointmentsController < ApplicationController
     @client = Client.find(params[:client_id])
     @client.total_time -= @appointment.duration.to_i
     @client.save
-  end
-
-  private
-
-  def set_appointment
-    @appointment = Appointment.find(params[:id])
-    authorize @appointment
-  end
-
-  def set_client
-    @client = Client.find(params[:client_id])
   end
 
   def appointment_params

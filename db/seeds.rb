@@ -42,7 +42,7 @@ calypso_client_one = Client.create!(
 )
 
 calypso_client_two = Client.create!(
-  name: "Total",
+  name: "Le Bon Coin",
   total_time: 120,
   user: calypso
 )

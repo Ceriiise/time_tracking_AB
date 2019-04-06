@@ -5,12 +5,12 @@ function refreshForm(innerHTML) {
 
 function addClient(clientHTML) {
   const clients = document.getElementById('clients');
-  clients.insertAdjacentHTML('beforeend', clientHTML);
+  clients.innerHTML = clientHTML;
 }
 
 <% if @client.errors.any? %>
   refreshForm('<%= j render "clients/form", client: @client %>');
 <% else %>
-  addClient('<%= j render "clients/list", client: @client %>');
+  addClient('<%= j render "clients/list", clients: @clients %>');
   refreshForm('<%= j render "clients/form", client: Client.new %>');
 <% end %>

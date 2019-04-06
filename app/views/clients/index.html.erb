@@ -6,9 +6,7 @@
     </div>
 
     <div id="clients">
-      <% @clients.each do |client| %>
-        <%= render 'clients/list', client: client %>
-      <% end %>
+      <%= render 'clients/list', clients: @clients %>
     </div>
   </div>
 <!-- CLIENT NEW -->
@@ -18,7 +16,7 @@
     </div>
 
     <div class="simple-form-content">
-      <%= render 'clients/form', client: @client %>
+      <%= render 'clients/form', client: Client.new %>
     </div>
   </div>
 </div>

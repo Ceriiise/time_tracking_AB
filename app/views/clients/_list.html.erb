@@ -1,22 +1,24 @@
-<div class="client-card-container">
-  <div class="client-card-name">
-    <%= client.name %>
-  </div>
-
-  <div class="client-card-time">
-    <%= client.total_time / 60 %> h <%= client.total_time % 60 %> min
-  </div>
-
-
-  <% if policy(client).show? %>
-    <div class="client-card-more">
-      <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+<% clients.each do |client| %>
+  <div class="client-card-container slide-in-bottom">
+    <div class="client-card-name">
+      <%= client.name %>
     </div>
-  <% end %>
 
-  <% if policy(client).destroy? %>
-    <div class="client-card-delete">
-      <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+    <div class="client-card-time ">
+      <%= client.total_time / 60 %> h <%= client.total_time % 60 %> min
     </div>
-  <% end %>
-</div>
+
+
+    <% if policy(client).show? %>
+      <div class="client-card-more">
+        <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
+      </div>
+    <% end %>
+
+    <% if policy(client).destroy? %>
+      <div class="client-card-delete">
+        <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
