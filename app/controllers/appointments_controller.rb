@@ -40,8 +40,8 @@ class AppointmentsController < ApplicationController
 
   def destroy
     decrese_total_time
+    @appointment_id = @appointment.id
     @appointment.destroy
-    redirect_to client_path(@client)
   end
 
   private

@@ -1,5 +1,5 @@
 <% clients.each do |client| %>
-  <div class="client-card-container slide-in-bottom">
+  <div class="client-card-container slide-in-bottom" id="client-<%= client.id %>">
     <div class="client-card-name">
       <%= client.name %>
     </div>
@@ -17,7 +17,7 @@
 
     <% if policy(client).destroy? %>
       <div class="client-card-delete">
-        <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
+        <%= link_to "", client_path(client), method: :delete, remote: true,data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
       </div>
     <% end %>
   </div>
