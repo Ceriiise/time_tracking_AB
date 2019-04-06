@@ -15,16 +15,21 @@ class AppointmentsController < ApplicationController
     upgrade_total_time
     authorize @appointment
     if @appointment.save
-      redirect_to client_path(@client)
+      @appointments = Appointment.where(client_id: @client).sort_by(&:date)
+      respond_to do |format|
+        format.html { redirect_to client_path(@client) }
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.js
+      end
     end
   end
 
   def edit
-    @client = Client.find(params[:client_id])
-    @client.total_time -= @appointment.duration.to_i
-    @client.save
+    decrese_total_time
   end
 
   def update
