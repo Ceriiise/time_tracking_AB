@@ -2,7 +2,6 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @clients = Client.all.sort_by(&:name)
     @clients = policy_scope(Client).sort_by(&:name)
   end
 
@@ -33,14 +32,6 @@ class ClientsController < ApplicationController
         format.js
       end
     end
-  end
-
-  def edit
-  end
-
-  def update
-    # Client.update(client_params)
-    # redirect_to clients_path
   end
 
   def destroy

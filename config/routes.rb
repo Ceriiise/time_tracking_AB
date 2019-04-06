@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :clients do
-    resources :appointments
+  resources :clients, only: [:index, :show, :new, :create, :destroy] do
+    resources :appointments, only: [:new, :create, :edit, :update, :destroy]
   end
   get 'calendar', to: 'pages#calendar'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

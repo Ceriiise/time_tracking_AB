@@ -1,12 +1,6 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:show, :edit, :update, :new, :create, :destroy]
-
-  def index
-  end
-
-  def show
-  end
+  before_action :set_appointment, only: [:edit, :update, :destroy]
+  before_action :set_client, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @appointment = Appointment.new
@@ -28,7 +22,9 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    decrese_total_time
+    @client = Client.find(params[:client_id])
+    @client.total_time -= @appointment.duration.to_i
+    @client.save
   end
 
   def update
@@ -44,6 +40,10 @@ class AppointmentsController < ApplicationController
   end
 
   private
+
+  def appointment_params
+    params.require(:appointment).permit(:date, :duration)
+  end
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
@@ -65,9 +65,4 @@ class AppointmentsController < ApplicationController
     @client.total_time -= @appointment.duration.to_i
     @client.save
   end
-
-  def appointment_params
-    params.require(:appointment).permit(:date, :duration)
-  end
-
 end
