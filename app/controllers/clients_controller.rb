@@ -23,9 +23,15 @@ class ClientsController < ApplicationController
     @client.total_time = 0
     authorize @client
     if @client.save!
-      redirect_to clients_path
+      respond_to do |format|
+        format.html { redirect_to client_path(@client) }
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.js
+      end
     end
   end
 

@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newClientForm = document.getElementById('new_client');
+  newClientForm.innerHTML = innerHTML;
+}
+
+function addClient(clientHTML) {
+  const clients = document.getElementById('clients');
+  clients.insertAdjacentHTML('beforeend', clientHTML);
+}
+
+<% if @client.errors.any? %>
+  refreshForm('<%= j render "clients/form", client: @client %>');
+<% else %>
+  addClient('<%= j render "clients/list", client: @client %>');
+  refreshForm('<%= j render "clients/form", client: Client.new %>');
+<% end %>

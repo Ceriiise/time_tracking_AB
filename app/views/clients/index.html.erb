@@ -1,56 +1,24 @@
-<div class="container">
-  <div class="index-container">
-    <div class="list-container">
-      <div class="client-title slide-in-left">
-        <h1>Les clients</h1>
-      </div>
-
-      <ul>
-        <% @clients.each do |client| %>
-          <li>
-            <div class="client-card-container slide-in-bottom">
-              <div class="client-card-name">
-                <%= client.name %>
-              </div>
-
-              <div class="client-card-time">
-                <%= client.total_time / 60 %> h <%= client.total_time % 60 %> min
-              </div>
-
-
-              <% if policy(client).show? %>
-                <div class="client-card-more">
-                  <%= link_to " infos", client_path(client), class:"fas fa-plus-circle" %>
-                </div>
-              <% end %>
-
-              <% if policy(client).destroy? %>
-                <div class="client-card-delete">
-                  <%= link_to "", client_path(client), method: :delete, data: { confirm: "Are you sure?" }, class:"fas fa-trash-alt" %>
-                </div>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+<div class="index-container">
+<!-- CLIENTS LIST -->
+  <div class="list-container">
+    <div class="client-title">
+      <h1>Les clients</h1>
     </div>
 
-    <div class="simple-form">
-      <div class="simple-form-title">
-        <h1>Add a client</h1>
-      </div>
-      <div class="simple-form-content">
-        <%= simple_form_for @client do |f| %>
-
-          <%= f.input :name %>
-
-          <%= f.button :submit, "Create client", class: "btn btn-primary" %>
-
-        <% end %>
-      </div>
+    <div id="clients">
+      <% @clients.each do |client| %>
+        <%= render 'clients/list', client: client %>
+      <% end %>
     </div>
-
   </div>
+<!-- CLIENT NEW -->
+  <div class="simple-form">
+    <div class="simple-form-title">
+      <h1>Add a client</h1>
+    </div>
 
-
+    <div class="simple-form-content">
+      <%= render 'clients/form', client: @client %>
+    </div>
+  </div>
 </div>
