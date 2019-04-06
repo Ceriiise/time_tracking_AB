@@ -22,9 +22,7 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @client = Client.find(params[:client_id])
-    @client.total_time -= @appointment.duration.to_i
-    @client.save
+    decrese_total_time
   end
 
   def update
