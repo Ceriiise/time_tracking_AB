@@ -60,13 +60,11 @@ class AppointmentsController < ApplicationController
   end
 
   def upgrade_total_time
-    @client = Client.find(params[:client_id])
     @client.total_time += @appointment.duration.to_i
     @client.save
   end
 
   def decrese_total_time
-    @client = Client.find(params[:client_id])
     @client.total_time -= @appointment.duration.to_i
     @client.save
   end
