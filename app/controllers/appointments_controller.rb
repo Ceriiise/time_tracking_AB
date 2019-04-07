@@ -33,8 +33,8 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    upgrade_total_time
     @appointment.update(appointment_params)
+    upgrade_total_time
     redirect_to client_path(@client)
   end
 
