@@ -1,16 +1,6 @@
 <div class="index-container">
 
   <div class="list-container">
-    <div class="app-header">
-      <div class="app-title slide-in-left">
-        <h1><%= @client.name %></h1>
-        <h5><%= pluralize @appointments.size, "appointment" %></h5>
-      </div>
-      <div class="app-time slide-in-right">
-        <h1><%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</h1>
-      </div>
-    </div>
-
     <div id="appointments">
       <%= render 'appointments/list', appointments: @appointments %>
     </div>

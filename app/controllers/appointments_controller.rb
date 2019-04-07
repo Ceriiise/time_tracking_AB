@@ -33,15 +33,15 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    upgrade_total_time
     @appointment.update(appointment_params)
+    upgrade_total_time
     redirect_to client_path(@client)
   end
 
   def destroy
     decrese_total_time
-    @appointment_id = @appointment.id
     @appointment.destroy
+    redirect_to client_path(@client)
   end
 
   private
@@ -60,13 +60,11 @@ class AppointmentsController < ApplicationController
   end
 
   def upgrade_total_time
-    @client = Client.find(params[:client_id])
     @client.total_time += @appointment.duration.to_i
     @client.save
   end
 
   def decrese_total_time
-    @client = Client.find(params[:client_id])
     @client.total_time -= @appointment.duration.to_i
     @client.save
   end

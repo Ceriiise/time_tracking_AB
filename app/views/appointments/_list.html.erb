@@ -1,5 +1,15 @@
+<div class="app-header">
+  <div class="app-title slide-in-left">
+    <h1><%= @client.name %></h1>
+    <h5><%= pluralize @appointments.size, "appointment" %></h5>
+  </div>
+  <div class="app-time slide-in-right">
+    <h1><%= @client.total_time / 60 %> h <%= @client.total_time % 60 %> min</h1>
+  </div>
+</div>
+
 <% appointments.each do |appointment| %>
-  <div class="app-card-container slide-in-bottom" id="appointment-<%= appointment.id %>">
+  <div class="app-card-container slide-in-bottom">
     <div class="app-card-date">
       <%= appointment.date.strftime("%e %B %Y") %>
     </div>
@@ -10,7 +20,7 @@
       <%= link_to '', edit_client_appointment_path(@client, appointment), class:"fas fa-edit" %>
     </div>
     <div class="app-card-delete" id="delete">
-      <%= link_to '', client_appointment_path(@client, appointment), method: :delete, remote: true, class:"fas fa-trash-alt" %>
+      <%= link_to '', client_appointment_path(@client, appointment), method: :delete, class:"fas fa-trash-alt" %>
     </div>
   </div>
 <% end %>
